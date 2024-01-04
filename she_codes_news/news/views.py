@@ -1,7 +1,8 @@
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import NewsStory
-from .forms import StoryFrom, Comment
+from .forms import StoryFrom
+# from .forms import StoryFrom, Comment
 
 
 class IndexView(generic.ListView):
@@ -32,17 +33,17 @@ class AddStoryView(generic.CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
     
-class AddCommentView(generic.CreateView):
-    form_class = Comment
+# class AddCommentView(generic.CreateView):
+#     form_class = Comment
 
-    def get(self, request, *args, **kwargs):
-        return ("news:story", pk=self.kwargs.get("pk"))
+#     def get(self, request, *args, **kwargs):
+#         return ("news:story", pk==self.kwargs.get("pk"))
     
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        pk = self.kwargs.get("pk")
-        form.instance.story = get_object_or_404(NewsStory, pk=pk)
-        return super().form_valid(form)
+#     def form_valid(self, form):
+#         form.instance.author = self.request.user
+#         pk = self.kwargs.get("pk")
+#         form.instance.story = get_object_or_404(NewsStory, pk=pk)
+#         return super().form_valid(form)
     
-    def get_success_url(self):
-        return reverse_lazy('news:story', kwargs={'pk':self.kwargs.get("pk")})
+#     def get_success_url(self):
+#         return reverse_lazy('news:story', kwargs={'pk':self.kwargs.get("pk")})

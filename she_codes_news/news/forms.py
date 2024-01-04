@@ -1,11 +1,13 @@
 from django import forms
 from django.forms import ModelForm
-from .models import NewsStory, Comment
+from .models import NewsStory
+# from .models import NewsStory, Comment
 
 class StoryFrom(ModelForm):
     class Meta:
         model = NewsStory
-        fields = ['title', 'pub_date', 'image', 'content', 'comment']
+        fields = ['title', 'pub_date', 'content']
+        # fields = ['title', 'pub_date', 'image', 'content', 'comment']
         widgets = {
             'pub_date': forms.DateInput(
                 format='%d/%m/%d',
