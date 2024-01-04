@@ -14,7 +14,7 @@
         {% if latest_stories %}
             {% for story in latest_stories %}
                 {% include './storyCard.html' with story=story position=forloop.counter %}
-                <p>{{ story.title }}</p>
+                <!-- <p>{{ story.title }}</p> -->
             {% endfor %}
         {% else %}
             <p>No stories are available.</p>

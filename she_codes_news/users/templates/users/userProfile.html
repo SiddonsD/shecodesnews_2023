@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- User Profile -->
+
+<!-- User Stories -->
+<h2> Stories by {{ author.username }} <h2>
+<div id="latest-stories">
+    {% if user_stories %}
+        {% for story in author.newsstory_set.all %}
+            {% include './storyCard.html' with story=story position=forloop.counter %}
+        {% endfor %}
+    {% else %}
+        <p> No stories available</p>
+    {% endif %}
+</div>
+
+{% endblock %}
